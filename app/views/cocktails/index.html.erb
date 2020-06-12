@@ -1,0 +1,30 @@
+<h1>All the cocktails</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name of Cocktails</th>
+            <th>link to see</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+    <% @cocktails.each do |cocktail| %>
+
+        <tr>
+            <td><%= cocktail.id %></td>
+            <td><%= cocktail.name %></td>
+            <td><%= link_to "voir", cocktail_path(cocktail) %></td>
+
+        </tr>
+      
+    <% end %>
+
+    </tbody>
+</table>
+
+<br><hr><br>
+
+<%= link_to "create cocktail", new_cocktail_path %>

@@ -1,0 +1,36 @@
+<h1><%= @cocktail.name %></h1>
+
+<h2>The recipe:</h2>
+
+<p><%= @cocktail.name %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name of Ingredients</th>
+            <th>Description</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <% @cocktail.ingredients.each do |ingredient| %>
+        <tr>
+            <td><%= ingredient.id %></td>
+            <td><%= ingredient.name %></td>
+            <td><%= ingredient.doses[0].description %></td>
+            <td><%= link_to "Delete",
+                  dose_path(ingredient.doses[0]),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      
+    <% end %>
+
+    </tbody>
+</table>
+
+<%= link_to "Modifier recette", new_cocktail_dose_path(@cocktail) %><br>
+<%= link_to "<<<retour", cocktails_path %>
+
+<%# new_cocktail_dose GET    /cocktails/:cocktail_id/doses/new(.:format)       doses#new %>
